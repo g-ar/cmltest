@@ -6,15 +6,11 @@ jobs:
     container: docker://ghcr.io/iterative/cml:latest
     steps:
       - uses: actions/checkout@v3
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
       - uses: iterative/setup-cml@v1
-      - uses: actions/setup-python@v2
-        with:
-          python-version: '3.8'
+      - uses: actions/setup-python@v4       
       - name: Train model
         env:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           pip3 install -r requirements.txt
           python train.py
