@@ -10,7 +10,7 @@ jobs:
       - uses: actions/setup-python@v4       
       - name: Train model
         env:
-          REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO_TOKEN: ${{ secrets.TMPTOKEN }}
         run: |
           pip3 install -r requirements.txt
           b="${{ secrets.GITHUB_TOKEN }}"
